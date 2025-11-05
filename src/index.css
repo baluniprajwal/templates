@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #0f2a25;
+  background: #052624;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #032323 0%, #114c4f 45%, #f7f3e6 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
