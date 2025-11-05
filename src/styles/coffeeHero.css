@@ -101,9 +101,59 @@
   transition: color 0.2s ease;
 }
 
-.coffee-hero__nav nav a:hover,
-.coffee-hero__nav nav a:focus-visible {
+.coffee-hero__nav nav button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(244, 248, 245, 0.78);
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.62rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.coffee-hero__nav-button {
+  position: relative;
+}
+
+.coffee-hero__nav-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.55rem;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(251, 216, 134, 0.65);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.coffee-hero__nav-button--active {
   color: #ffffff;
+}
+
+.coffee-hero__nav-button--active::after {
+  transform: scaleX(1);
+}
+
+.coffee-hero__nav nav a:hover,
+.coffee-hero__nav nav a:focus-visible,
+.coffee-hero__nav nav button:hover,
+.coffee-hero__nav nav button:focus-visible {
+  color: #ffffff;
+}
+
+.coffee-hero__layout {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.coffee-hero--about-open .coffee-hero__layout {
+  transform: translateX(-8%);
+  filter: brightness(0.9);
 }
 
 .coffee-hero__cta {
@@ -354,6 +404,274 @@
   opacity: 0.85;
 }
 
+.coffee-hero__about-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 14, 11, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  animation: fadeBackdrop 0.25s ease forwards;
+}
+
+.coffee-hero__about-panel {
+  position: fixed;
+  top: 50%;
+  right: clamp(1rem, 4vw, 2.5rem);
+  transform: translate3d(0, -50%, 0);
+  width: clamp(26rem, 60vw, 34rem);
+  min-height: clamp(24rem, 68vh, 32rem);
+  max-height: calc(100vh - clamp(2rem, 8vw, 4.5rem));
+  padding: clamp(1.75rem, 5vw, 2.6rem) clamp(1.6rem, 5vw, 2.4rem);
+  border-radius: clamp(1.4rem, 4vw, 2.1rem);
+  background:
+    linear-gradient(135deg, rgba(12, 60, 43, 0.95) 0%, rgba(4, 23, 18, 0.92) 100%);
+  border: 1px solid rgba(251, 216, 134, 0.22);
+  box-shadow: 0 42px 120px rgba(0, 0, 0, 0.55);
+  z-index: 11;
+  display: grid;
+  gap: clamp(1.25rem, 4vw, 1.8rem);
+  color: rgba(244, 248, 245, 0.92);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  animation: slidePanel 0.36s ease forwards;
+}
+
+.coffee-hero__about-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.coffee-hero__about-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.coffee-hero__about-panel::-webkit-scrollbar-thumb {
+  background: rgba(251, 216, 134, 0.35);
+  border-radius: 999px;
+}
+
+.coffee-hero__about-panel {
+  scrollbar-color: rgba(251, 216, 134, 0.35) transparent;
+}
+
+.coffee-hero__about-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.coffee-hero__about-kicker {
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.62rem;
+  color: rgba(251, 216, 134, 0.8);
+}
+
+.coffee-hero__about-header h2 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+}
+
+.coffee-hero__about-close {
+  border: 1px solid rgba(251, 216, 134, 0.35);
+  border-radius: 999px;
+  padding: 0.4rem 1.4rem;
+  color: rgba(244, 248, 245, 0.9);
+  background: rgba(10, 36, 28, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.58rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.coffee-hero__about-close:hover,
+.coffee-hero__about-close:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(251, 216, 134, 0.28);
+  color: #1a3d33;
+}
+
+.coffee-hero__about-lede {
+  margin: 0;
+  line-height: 1.65;
+  color: rgba(244, 248, 245, 0.82);
+}
+
+.coffee-hero__about-pillars {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.4rem);
+}
+
+.coffee-hero__about-pillars article {
+  padding: clamp(1.2rem, 4vw, 1.6rem);
+  border-radius: clamp(1rem, 3vw, 1.4rem);
+  background: rgba(4, 31, 26, 0.7);
+  border: 1px solid rgba(251, 216, 134, 0.18);
+  box-shadow: 0 24px 68px rgba(0, 0, 0, 0.28);
+}
+
+.coffee-hero__about-pillars h3 {
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.78rem;
+  color: rgba(251, 216, 134, 0.88);
+}
+
+.coffee-hero__about-pillars p {
+  margin: 0;
+  color: rgba(244, 248, 245, 0.78);
+  line-height: 1.6;
+}
+
+.coffee-hero__about-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(0.8rem, 2.5vw, 1.2rem);
+}
+
+.coffee-hero__about-stats li {
+  padding: 1rem 1.2rem;
+  border-radius: 1.2rem;
+  background: rgba(4, 31, 26, 0.65);
+  border: 1px solid rgba(244, 248, 245, 0.14);
+  text-align: center;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.coffee-hero__about-stats strong {
+  font-size: 1.9rem;
+  letter-spacing: 0.14em;
+  color: #fbdc7f;
+}
+
+.coffee-hero__about-stats span {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.56rem;
+  color: rgba(244, 248, 245, 0.7);
+}
+
+.coffee-hero__about-closing {
+  margin: 0;
+  color: rgba(244, 248, 245, 0.8);
+  line-height: 1.6;
+}
+
+.coffee-hero__about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.coffee-hero__about-links a {
+  padding: 0.65rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(251, 216, 134, 0.3);
+  color: rgba(244, 248, 245, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.58rem;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.coffee-hero__about-links a:hover,
+.coffee-hero__about-links a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(251, 216, 134, 0.22);
+  color: #052821;
+}
+
+.coffee-hero__sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 14, 11, 0.68);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  animation: fadeBackdrop 0.25s ease forwards;
+}
+
+.coffee-hero__sheet {
+  position: fixed;
+  inset: auto clamp(1.5rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 4rem);
+  border-radius: clamp(1.4rem, 5vw, 2.4rem);
+  background:
+    linear-gradient(145deg, rgba(12, 60, 43, 0.94) 0%, rgba(4, 23, 18, 0.92) 100%);
+  border: 1px solid rgba(251, 216, 134, 0.22);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+  z-index: 11;
+  padding: clamp(1.5rem, 5vw, 2.75rem);
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.6rem);
+  max-width: clamp(28rem, 60vw, 38rem);
+  margin: 0 auto;
+  color: rgba(244, 248, 245, 0.92);
+  animation: slideSheet 0.32s ease forwards;
+}
+
+.coffee-hero__sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.coffee-hero__sheet-header h2 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+
+.coffee-hero__sheet-close {
+  border: 1px solid rgba(251, 216, 134, 0.32);
+  border-radius: 999px;
+  padding: 0.4rem 1.4rem;
+  color: rgba(244, 248, 245, 0.92);
+  background: rgba(10, 36, 28, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.58rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.coffee-hero__sheet-close:hover,
+.coffee-hero__sheet-close:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(251, 216, 134, 0.28);
+  color: #1a3d33;
+}
+
+.coffee-hero__sheet-body {
+  display: grid;
+  gap: clamp(0.75rem, 3vw, 1.2rem);
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+.coffee-hero__sheet-body a {
+  color: #fbdc7f;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.25em;
+}
+
+.coffee-hero__sheet-body a:hover,
+.coffee-hero__sheet-body a:focus-visible {
+  color: #ffffff;
+}
+
 .fade-in-left {
   animation: fadeInLeft 0.8s ease forwards;
 }
@@ -381,6 +699,37 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideSheet {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slidePanel {
+  from {
+    opacity: 0;
+    transform: translate3d(40%, -50%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes fadeBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -415,5 +764,33 @@
   .coffee-hero__price {
     width: 104px;
     height: 104px;
+  }
+
+  .coffee-hero__sheet {
+    inset: auto clamp(1rem, 6vw, 2.5rem) clamp(1rem, 8vw, 2.5rem);
+    max-width: none;
+  }
+
+  .coffee-hero__about-panel {
+    width: min(90vw, 34rem);
+    right: 50%;
+    transform: translate3d(50%, -50%, 0);
+    animation: slidePanelMobile 0.36s ease forwards;
+  }
+
+  .coffee-hero--about-open .coffee-hero__layout {
+    transform: translateY(0);
+    filter: none;
+  }
+}
+
+@keyframes slidePanelMobile {
+  from {
+    opacity: 0;
+    transform: translate3d(70%, -50%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(50%, -50%, 0);
   }
 }
